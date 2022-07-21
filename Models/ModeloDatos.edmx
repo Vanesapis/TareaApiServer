@@ -88,8 +88,8 @@
           <Property Name="pass" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_Producto_CategoriaProductos1">
-          <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
-          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <End Type="Self.CategoriaProductos" Multiplicity="1" Role="CategoriaProductos" />
+          <End Type="Self.Producto" Multiplicity="*" Role="Producto" />
           <ReferentialConstraint>
             <Principal Role="CategoriaProductos">
               <PropertyRef Name="Id" />
@@ -104,8 +104,8 @@
           <EntitySet Name="Producto" EntityType="Self.Producto" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <AssociationSet Name="FK_Producto_CategoriaProductos1" Association="Self.FK_Producto_CategoriaProductos1">
-            <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
-            <End Role="Producto" EntitySet="Producto" />
+            <End EntitySet="CategoriaProductos" Role="CategoriaProductos" />
+            <End EntitySet="Producto" Role="Producto" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
