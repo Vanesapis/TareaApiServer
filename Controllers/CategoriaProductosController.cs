@@ -110,8 +110,16 @@ namespace APITarea1.Controllers
                 return NotFound();
             }
 
-            db.CategoriaProductos.Remove(categoriaProductos);
-            db.SaveChanges();
+            try
+            {
+                db.CategoriaProductos.Remove(categoriaProductos);
+                db.SaveChanges();
+            }
+            catch(Exception)
+            {
+                return BadRequest("No se pudo eliminar hay productos asociados");
+            }
+
 
             return Ok(categoriaProductos);
         }
