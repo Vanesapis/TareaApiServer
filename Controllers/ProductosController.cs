@@ -21,9 +21,9 @@ namespace APITarea1.Controllers
         {
             return db.Producto;
         }
-        // POST: api/CategoriaProductos
-        [ResponseType(typeof(CategoriaProductos))]
-        public IHttpActionResult PostaProducto(Producto Producto)
+        // POST: api/Productos
+        [ResponseType(typeof(Producto))]
+        public IHttpActionResult PostProducto(Producto Producto)
         {
             if (!ModelState.IsValid)
             {
