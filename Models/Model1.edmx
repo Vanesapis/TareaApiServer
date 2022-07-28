@@ -22,7 +22,6 @@
           <Property Name="Precio" Type="int" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="IdCategoria" Type="int" Nullable="false" />
-          <Property Name="imagen" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -76,7 +75,6 @@
           <Property Name="Precio" Type="Int32" Nullable="false" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <Property Name="IdCategoria" Type="Int32" Nullable="false" />
-          <Property Name="imagen" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="CategoriaProductos" Relationship="Self.FK_Producto_CategoriaProductos1" FromRole="Producto" ToRole="CategoriaProductos" />
         </EntityType>
         <EntityType Name="Usuario">
@@ -88,8 +86,8 @@
           <Property Name="pass" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_Producto_CategoriaProductos1">
-          <End Type="Self.CategoriaProductos" Multiplicity="1" Role="CategoriaProductos" />
-          <End Type="Self.Producto" Multiplicity="*" Role="Producto" />
+          <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CategoriaProductos">
               <PropertyRef Name="Id" />
@@ -104,8 +102,8 @@
           <EntitySet Name="Producto" EntityType="Self.Producto" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <AssociationSet Name="FK_Producto_CategoriaProductos1" Association="Self.FK_Producto_CategoriaProductos1">
-            <End EntitySet="CategoriaProductos" Role="CategoriaProductos" />
-            <End EntitySet="Producto" Role="Producto" />
+            <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
+            <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -131,7 +129,6 @@
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -161,7 +158,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
